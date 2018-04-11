@@ -6,6 +6,8 @@ int main()
 {
     char seguir='s';
     int opcion=0;
+    int flagA=0;
+    int flagB=0;
     float a;
     float b;
     float resultado;
@@ -13,8 +15,22 @@ int main()
     do
     {
         printf("\n  >>> MENU CALCULADORA <<<\n" );
-        printf("1- Ingresar 1er operando (A=x)\n");
-        printf("2- Ingresar 2do operando (B=y)\n");
+        if(flagA==0)
+        {
+            printf("1- Ingresar 1er operando (A=x)\n");
+        }
+        else
+        {
+            printf("1- Ingresar 1er operando (A=%.2f)\n", a);
+        }
+        if(flagB == 0)
+        {
+            printf("2- Ingresar 2do operando (B=y)\n");
+        }
+        else
+        {
+            printf("2- Ingresar 2do operando (B=%.2f)\n",b);
+        }
         printf("3- Calcular la suma (A+B)\n");
         printf("4- Calcular la resta (A-B)\n");
         printf("5- Calcular la division (A/B)\n");
@@ -28,9 +44,11 @@ int main()
         switch(opcion)
         {
             case 1:
+                flagA = 1;
                 a = valorEntrada();
                 break;
             case 2:
+                flagB = 1;
                 b = valorEntrada();
                 break;
             case 3:
