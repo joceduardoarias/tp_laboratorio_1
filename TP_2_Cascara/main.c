@@ -1,31 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "funciones.h"
+#define TAM 20
 
-typedef struct {
-
-    char nombre[50];
-    int edad;
-    int estado;
-    int dni;
-
-}EPersona;
-
-/**
- * Obtiene el primer indice libre del array.
- * param lista: el array se pasa como parametro.
- */
-int ObtenerEspacioLibre(EPersona lista[]);
-/**
- * Obtiene el indice que coincide con el dni pasado por parametro.
- * param lista: el array se pasa como parametro. dni: el dni a ser buscado en el array.
- */
-int BuscarPorDni(EPersona lista[], int dni);
 
 int main()
 {
     char seguir='s';
     int opcion=0;
-
+    EPersona lista [TAM] = { {"Jose",26,0,95431123},{"Juan", 27,0,95434123},{"Maria",20,0,96431123},{"Julio",30,0,95431123},{"Daniela",18,0,96431123}} ;
+    inicializarLista(lista,TAM);
+    for(int i=0; i< TAMSEC; i++)
+    {
+        lista[i].estado = 0;
+    }
     while(seguir=='s')
     {
         printf("1- Agregar persona\n");
@@ -38,17 +26,19 @@ int main()
 
         switch(opcion)
         {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                seguir = 'n';
-                break;
+        case 1:
+            altaPersonas(lista,TAM);
+            system("pause");
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            seguir = 'n';
+            break;
         }
     }
 
