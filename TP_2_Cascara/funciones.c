@@ -3,7 +3,8 @@
 #include "funciones.h"
 void inicializarLista(EPersona lista[], int tam)
 {
-    for(int i=0; i< tam; i++)
+    int i;
+    for(i=0; i< tam; i++)
     {
         lista[i].estado =1;
     }
@@ -24,8 +25,9 @@ int obtenerEspacioLibre(EPersona lista[], int tam)
 }
 int buscarPorDni(EPersona lista[],int tam, int dni)
 {
+    int i;
     int indice = -1;
-    for(int i=0; i < tam; i++)
+    for(i=0; i < tam; i++)
     {
         if(lista[i].estado == 0 && lista[i].dni == dni)
         {
@@ -74,14 +76,90 @@ void altaPersonas(EPersona lista[], int tam)
             fflush(stdin);
             scanf("%d", &nuevaPersona.edad);
 
-            printf("Ingrese dni: ");
-            scanf("%d", &nuevaPersona.dni);
 
             lista[indice]= nuevaPersona;
 
             printf("\nAlta exitosa!!!\n\n");
 
         }
+    }
+
+}
+void mostrarDatos(EPersona lista[], int tam)
+{
+    int i;
+    system("cls");
+    printf("      ---Lista de Personas---\n\n");
+    printf("  Nombre   Edad   DNI \n\n");
+    for(i=0; i< tam; i++)
+    {
+        if(lista[i].estado == 0)
+        {
+            mostrarDato(lista[i]);
+        }
+    }
+}
+void mostrarDato(EPersona lista)
+{
+    printf("\n %s \t %10d  \t%d\n",lista.nombre,lista.edad,lista.dni );
+    printf("\n");
+}
+void bajaPersonas(EPersona lista[], int tam)
+{
+    int dni;
+    int esta;
+    char confirma;
+
+    system("cls");
+    printf("---Baja registro---\n\n");
+
+    printf("Ingrese dni: ");
+    scanf("%d", &dni);
+
+    esta = buscarPorDni(lista, tam, dni);
+
+    if(esta == -1)
+    {
+        printf("\nEl dni  %d no se encuentra en el sistema\n\n", dni);
+
+    }
+    else
+    {
+
+        mostrarDato(lista[esta]);
+
+        printf("\nConfirma baja?: ");
+        fflush(stdin);
+        scanf("%c", &confirma);
+
+        if(confirma == 's')
+        {
+            lista[esta].estado = 1;
+            printf("\nSe ha realizado la baja\n\n");
+        }
+        else
+        {
+            printf("\nSe ha cancelado la baja\n\n");
+        }
+
+    }
+}
+void ordenarCaracteres(EPersona lista[], int tam )
+{
+    int j,i,aux;
+
+    for(int j=1; j<tam; j++)
+    {
+        aux=strcmp(lista[j].nombre,lista[j+1].nombre);
+        if(temp2>0)
+            strcpy(lista[0].nombre,lista[j].nombre);
+        strcpy(lista[j].nombre,lista[j+1].nombre);
+        strcpy(lista[j+1].nombre,lista[0].nombre);
+    }
+
+    for( i=1; i<tam; i++)
+    {
+        mostrarDato(lista[i]);
     }
 
 }

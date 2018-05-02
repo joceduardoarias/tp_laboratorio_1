@@ -31,10 +31,34 @@ int buscarPorDni(EPersona lista[],int tam, int dni);
  */
 void inicializarLista(EPersona lista[], int tam);
 /** \brief
- *  carga los datos ingresados por los usuarios en cada uno de los ficheros.
+ *  carga los datos ingresados por EL usuario en cada uno de los ficheros.
  * \param lista el array se pasa como parametro.
  * \param  tam se pasa el tamaño del array.
  */
 void altaPersonas(EPersona lista[], int tam);
-
+/** \brief
+ *  layout de los datos ingresado por el usuario.
+ * \param lista el array se pasa como parametro.
+ * \param tam se pasa el tamaño del array.
+ */
+ void bajaPersonas(EPersona lista[], int tam);
+/** \brief
+ *  eliminar registros ingresado por el usuario.
+ * \param lista el array se pasa como parametro.
+ * \param tam se pasa el tamaño del array.
+ */
+void mostrarDatos(EPersona lista[], int tam);
+/** \brief
+ *  layout de los datos ingresado por el usuario.
+ * \param lista el array se pasa como parametro.
+ * \param tam se pasa el tamaño del array.
+ */
+ void mostrarDato(EPersona lista);
+ /** \brief
+  *  ordena los registros en orden alfabetico
+  * \param lista el array se pasa como parametro.
+  * \param tam se pasa el tamaño del array.
+  */
+  void ordenarCaracteres(EPersona lista[], int tam );
 #endif // FUNCIONES_H_INCLUDED
+
