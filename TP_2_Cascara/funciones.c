@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "funciones.h"
 void inicializarLista(EPersona lista[], int tam)
 {
@@ -146,20 +147,84 @@ void bajaPersonas(EPersona lista[], int tam)
 }
 void ordenarCaracteres(EPersona lista[], int tam )
 {
-    int j,i,aux;
 
-    for(int j=1; j<tam; j++)
+     EPersona personaAux;
+    int i, j;
+    for(i=0; i<tam-1; i++)
     {
-        aux=strcmp(lista[j].nombre,lista[j+1].nombre);
-        if(temp2>0)
-            strcpy(lista[0].nombre,lista[j].nombre);
-        strcpy(lista[j].nombre,lista[j+1].nombre);
-        strcpy(lista[j+1].nombre,lista[0].nombre);
+        for(j=i+1; j<tam; j++)
+        {
+            if(strcmp(lista[i].nombre, lista[j].nombre) > 0)
+            {
+                personaAux = lista[i];
+                lista[i] = lista[j];
+                lista[j] =  personaAux;
+            }
+
+        }
+    }
+}
+void graficoEdad (EPersona lista[], int tam)
+{
+    int i, j, hasta18=0, de19a35=0, mayorDe35=0, bandera=0, mayor;
+
+    for(j=0; j<tam; j++)
+    {
+        if(lista[j].edad<18 && lista[j].edad>0)
+        {
+            hasta18++;
+
+        }
+        else if(lista[j].edad>35)
+        {
+            mayorDe35++;
+        }
+        else if( lista[j].edad > hasta18)
+        {
+            de19a35++;
+        }
     }
 
-    for( i=1; i<tam; i++)
+    if(hasta18 >= de19a35 && hasta18 >= mayorDe35)
     {
-        mostrarDato(lista[i]);
+        mayor = hasta18;
+    }
+    else
+    {
+        if(de19a35 >= hasta18 && de19a35 >= mayorDe35)
+        {
+            mayor = de19a35;
+        }
+        else
+        {
+            mayor = mayorDe35;
+        }
     }
 
+    for(i=mayor; i>0; i--)
+    {
+        printf("%02d|",i);
+
+        if(i<= hasta18)
+        {
+            printf("*");
+        }
+        if(i<= de19a35)
+        {
+            bandera=1;
+            printf("\t*");
+        }
+        if(i<= mayorDe35)
+        {
+            if(bandera==0)
+                printf("\t\t*");
+            if(bandera==1)
+                printf("\t*");
+
+        }
+        printf("\n");
+    }
+    printf("--+-----------------");
+    printf("\n  |<18\t19-35\t>35");
+    printf("\n   %d\t%d\t%d\n", hasta18, de19a35, mayorDe35);
 }

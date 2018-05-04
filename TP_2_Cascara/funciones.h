@@ -60,5 +60,14 @@ void mostrarDatos(EPersona lista[], int tam);
   * \param tam se pasa el tamaño del array.
   */
   void ordenarCaracteres(EPersona lista[], int tam );
+
+  /** \brief
+   *  Imprime grafico de edades
+   * \param lista el array se pasa como parametro.
+   * \param tam se pasa el tamaño del array.
+   * \return
+   */
+   void graficoEdad (EPersona lista[], int tam);
+
 #endif // FUNCIONES_H_INCLUDED
 

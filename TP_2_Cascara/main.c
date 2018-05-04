@@ -38,11 +38,13 @@ int main()
             break;
         case 3:
 
+            //mostrarDatos(lista,TAM);
+            ordenarCaracteres(lista,TAM);
             mostrarDatos(lista,TAM);
              system("pause");
             break;
         case 4:
-            ordenarCaracteres(lista,TAM);
+             graficoEdad(lista,TAM);
              system("pause");
             break;
         case 5:
