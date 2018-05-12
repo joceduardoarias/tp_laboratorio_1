@@ -9,11 +9,15 @@ int main()
     int i;
     char seguir='s';
     int opcion=0;
-    EPersona lista [TAM] = { {"Jose",26,0,95431123},{"Juan", 27,0,95434123},{"Maria",20,0,96431123},{"Julio",30,0,95431123},{"Daniela",18,0,96431123}} ;
+    EPersona lista [TAM]; //{ {"Jose",26,0,95431123},{"Juan", 27,0,95434123},{"Maria",20,0,96431123},{"Julio",30,0,95431123},{"Daniela",18,0,96431123}} ;
     inicializarLista(lista,TAM);
-    for(i=0; i< 5; i++)
+    /*for(i=0; i< 5; i++)
     {
         lista[i].estado = 0;
+    }*/
+    for(i=0; i< TAM; i++)
+    {
+        lista[i].edad = 0;
     }
     while(seguir=='s')
     {   system("cls");
@@ -39,8 +43,7 @@ int main()
         case 3:
 
             //mostrarDatos(lista,TAM);
-            ordenarCaracteres(lista,TAM);
-            mostrarDatos(lista,TAM);
+             ordenarCaracteres(lista,TAM);
              system("pause");
             break;
         case 4:

@@ -90,8 +90,8 @@ void mostrarDatos(EPersona lista[], int tam)
 {
     int i;
     system("cls");
-    printf("      ---Lista de Personas---\n\n");
-    printf("  Nombre   Edad   DNI \n\n");
+    printf("           ---Lista de Personas---\n\n");
+    printf("       Nombre       Edad        DNI \n\n");
     for(i=0; i< tam; i++)
     {
         if(lista[i].estado == 0)
@@ -102,8 +102,8 @@ void mostrarDatos(EPersona lista[], int tam)
 }
 void mostrarDato(EPersona lista)
 {
-    printf("\n %s \t %10d  \t%d\n",lista.nombre,lista.edad,lista.dni );
-    printf("\n");
+    printf("\n %12s \t %10d \t %4d\n",lista.nombre,lista.edad,lista.dni );
+
 }
 void bajaPersonas(EPersona lista[], int tam)
 {
@@ -154,7 +154,7 @@ void ordenarCaracteres(EPersona lista[], int tam )
     {
         for(j=i+1; j<tam; j++)
         {
-            if(strcmp(lista[i].nombre, lista[j].nombre) > 0)
+            if(stricmp(lista[i].nombre, lista[j].nombre) > 0)
             {
                 personaAux = lista[i];
                 lista[i] = lista[j];
@@ -163,6 +163,7 @@ void ordenarCaracteres(EPersona lista[], int tam )
 
         }
     }
+    mostrarDatos(lista,tam);
 }
 void graficoEdad (EPersona lista[], int tam)
 {
@@ -225,6 +226,6 @@ void graficoEdad (EPersona lista[], int tam)
         printf("\n");
     }
     printf("--+-----------------");
-    printf("\n  |<18\t19-35\t>35");
-    printf("\n   %d\t%d\t%d\n", hasta18, de19a35, mayorDe35);
+    printf("\n  |<18\t19-35\t>35 \n\n");
+    printf("\n   Hasta 18: %d\t de19a35: %d\tmayor de3 5%d\n", hasta18, de19a35, mayorDe35);
 }
