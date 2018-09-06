@@ -18,24 +18,24 @@ float getFloat (char mensaje[]);
  *\param valor1.
  *\param valor2.
  */
- void calcularSuma(float, float);
+ float calcularSuma(float, float);
  /**\brief calcular la resta de dos valores .
  *\param valor1.
  *\param valor2.
  */
- void calcularResta(float,float);
+ float calcularResta(float,float);
  /**
  *\brief calcular la division entre dos valores .
  *\param valor1.
  *\param valor2.
  */
- void calcularDivision(float,float);
+ float calcularDivision(float,float);
  /**
  *\brief calcular el producto entre dos valores .
  *\param valor1.
  *\param valor2.
  */
-void calcularMultipicacion(float,float);
+float calcularMultipicacion(float,float);
  /**
  *\brief calcula el factorial de un numero
  *\param valor1 ingresado por el usuario
@@ -51,6 +51,6 @@ float calcularFactorial(float);
  */
  float calcularTodasLasOperaciones(float valor1, float valor2);
 
-
+void mostrarResultado(float,float,float,float,float,float,float,float);
 
 #endif // MIBIBLIOTECA_H_INCLUDED

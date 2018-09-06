@@ -10,10 +10,10 @@ int main()
     int flagB=0;
     float a;
     float b;
-    float resultadoA,resultadoB;
+    float resultadoA,resultadoB,suma,resta,multipicacion,division;
 
     do
-    {
+    {    system("cls");
         printf("\n  >>> MENU CALCULADORA <<<\n" );
         if(flagA==0)
         {
@@ -31,16 +31,9 @@ int main()
         {
             printf("2- Ingresar 2do operando (B=%.2f)\n",b);
         }
-        printf("3- Calcular la suma (A+B)\n");
-        printf("4- Calcular la resta (A-B)\n");
-        printf("5- Calcular la division (A/B)\n");
-        printf("6- Calcular la multiplicacion (A*B)\n");
-        printf("7- Calcular el factorial (A!) - Calcular el factorial (B!) \n");
-        printf("8- Calcular todas las operacione\n");
-        printf("9- Salir\n");
-
+        printf("3- Calcular todas las operaciones: \n a. Calcular la suma (A+B)\n b. Calcular la resta (A-B)\n c. Calcular la division (A/B)\n d. Calcular la multiplicacion (A*B)\n e. Calcular el factorial (A!)\n4- Informar resultados\n5- Salir\n");
         opcion = getInt("\n Seleccione una opcion: ");
-        system("cls");
+
         switch(opcion)
         {
         case 1:
@@ -57,46 +50,20 @@ int main()
             break;
         case 3:
             system("cls");
-            calcularSuma(a,b);
-            system("pasue");
+            suma = calcularSuma(a,b);
+            resta = calcularResta(a,b);
+            multipicacion = calcularMultipicacion(a,b);
+            division = calcularDivision(a,b);
+            resultadoA = calcularFactorial(a);
+            resultadoB = calcularFactorial(b);
+            system("pause");
             break;
         case 4:
             system("cls");
-            calcularResta(a,b);
+            mostrarResultado(a,b,suma,resta,multipicacion,division,resultadoA,resultadoB);
             system("pause");
             break;
         case 5:
-            system("cls");
-            calcularDivision(a,b);
-            system("pause");
-            break;
-        case 6:
-            system("cls");
-            calcularMultipicacion(a,b);
-            system("pause");
-            break;
-        case 7:
-            system("cls");
-            resultadoA = calcularFactorial(a);
-            resultadoB = calcularFactorial(b);
-            printf("\n %.f! = %.f \n %.f! = %.f \n",a,resultadoA,b,resultadoB);
-            system("pause");
-            break;
-        case 8:
-            system("cls");
-            calcularSuma(a,b);
-
-            calcularResta(a,b);
-
-            calcularDivision(a,b);
-
-            calcularMultipicacion(a,b);
-            resultadoA = calcularFactorial(a);
-            resultadoB = calcularFactorial(b);
-            printf("\n %.f! = %.f \n %.f! = %.f \n",a,resultadoA,b,resultadoB);
-            system("pause");
-            break;
-        case 9:
             seguir = 'n';
             break;
         }
