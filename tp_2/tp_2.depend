@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1537370285 source:d:\ariasjose\tp_2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"employee.h"
+	"utn.h"
+
+1537369967 d:\ariasjose\tp_2\employee.h
+
+1537362212 d:\ariasjose\tp_2\utn.h
+
+1537370136 source:d:\ariasjose\tp_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"employee.h"
+	"utn.h"
+
+1537362353 source:d:\ariasjose\tp_2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1537402326 source:c:\users\elkinjose\desktop\laboratorio_2018_ii\tp_2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"employee.h"
+	"utn.h"
+
+1537401850 c:\users\elkinjose\desktop\laboratorio_2018_ii\tp_2\employee.h
+
+1537393355 c:\users\elkinjose\desktop\laboratorio_2018_ii\tp_2\utn.h
+
+1537393355 source:c:\users\elkinjose\desktop\laboratorio_2018_ii\tp_2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1537402386 source:c:\users\elkinjose\desktop\laboratorio_2018_ii\tp_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"employee.h"
+	"utn.h"
+
