@@ -4,7 +4,7 @@
 #include "employee.h"
 #include "utn.h"
 #define LEN_MAX 1000
-void initEmployee(eEmployee* arrayEmployee, int len );
+
 int main()
 {
     eEmployee empleado[LEN_MAX];
@@ -29,7 +29,7 @@ int main()
     setArrayEmployee(empleado,1,"Juan","Munoz",56.23,2,2,EMPLOYEE_USED);
     setArrayEmployee(empleado,2,"Luis","Cadena",95.23,1,3,EMPLOYEE_USED);
     do
-    {
+    {   system("cls");
         printf("\n1. ALTA \n2. BAJA \n3. MODIFICACION\n4. INFORMES\n5. SALIR");
         opcion = getInt("\n SELECCIONE UNA OPCION: ");
 
@@ -66,6 +66,154 @@ int main()
                 printf("\n BAJA CANCELADA");
                 seguir = 's';
             }
+            system("pause");
+            break;
+        case 3:
+            system("cls");
+            do
+            {   system("cls");
+                printf("\n *******MENU DE MODIFICACIONES********");
+                printf("\n\n");
+                printf("\n1. NOMBRE \n2. APELLIDO\n3. SALARIO\n4. SECTOR\n5. SALIR");
+                opcion = getInt("\n Seleccione una opcion: ");
+                switch(opcion)
+                {
+                case 1:
+                    system("cls");
+                    if(getStringNumeros("\nIIngrese ID empleado:",idSrt)!= 1)
+                    {
+                        printf("\n Ingrese solo numeros!!!\n");
+                        break;
+                    }
+                    auxId = atoi(idSrt);
+                    if(buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId)== -1)
+                    {
+                        printf("\n El ID no existe!!!\n");
+                        break;
+                    }
+                    indexResultadoBusqueda = buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId);
+                    printEmployee(empleado,LEN_MAX,indexResultadoBusqueda);
+                    if(getStringLetras("\n Ingrese nuevo nombre: ",nombreSrt)!= 1)
+                    {
+                        printf("\n Ingrese solo letras!!!\n");
+                        break;
+                    }
+                    seguir = getChar("\n CONFIRMAR (S/N): ");
+                    if(seguir == 's')
+                    {
+                        strcpy(empleado[indexResultadoBusqueda].name,nombreSrt);
+                        printf("\n Modificacion confirmada\n");
+                    }
+                    else
+                    {
+                        seguir = 'n';
+                    }
+                    system("pause");
+                    break;
+                case 2:
+                    system("cls");
+                    if(getStringNumeros("\nIIngrese ID empleado:",idSrt)!= 1)
+                    {
+                        printf("\n Ingrese solo numeros!!!\n");
+                        break;
+                    }
+                    auxId = atoi(idSrt);
+                    if(buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId)== -1)
+                    {
+                        printf("\n El ID no existe!!!\n");
+                        break;
+                    }
+                    indexResultadoBusqueda = buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId);
+                    printEmployee(empleado,LEN_MAX,indexResultadoBusqueda);
+                    if(getStringLetras("\n Ingrese nuevo Apellido: ",apellidoSrt)!= 1)
+                    {
+                        printf("\n Ingrese solo letras!!!\n");
+                        break;
+                    }
+                    seguir = getChar("\n CONFIRMAR (S/N): ");
+                    if(seguir == 's')
+                    {
+                        strcpy(empleado[indexResultadoBusqueda].lastName,apellidoSrt);
+                        printf("\n Modificacion confirmada\n");
+                    }
+                    else
+                    {
+                        seguir = 'n';
+                    }
+                    system("pause");
+                    break;
+                case 3:
+                    system("cls");
+                    if(getStringNumeros("\nIIngrese ID empleado:",idSrt)!= 1)
+                    {
+                        printf("\n Ingrese solo numeros!!!\n");
+                        break;
+                    }
+                    auxId = atoi(idSrt);
+                    if(buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId)== -1)
+                    {
+                        printf("\n El ID no existe!!!\n");
+                        break;
+                    }
+                    indexResultadoBusqueda = buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId);
+                    printEmployee(empleado,LEN_MAX,indexResultadoBusqueda);
+                    if(getStringNumerosFlotantes("\n Ingrese nuevo salario: ",salarioSrt)!= 1)
+                    {
+                         printf("\n Ingrese solo numeros!!!\n");
+                        break;
+                    }
+                    auxSalario = atof(salarioSrt);
+                    getChar("\n CONFIRMAR (S/N): \n");
+                    if(seguir == 's')
+                    {
+                        empleado[indexResultadoBusqueda].salary = auxSalario;
+                        printf("\n Modificacion Exitosa!!!");
+                    }
+                    else
+                    {
+                        printf("\n MODIFICACION CANCELADA!!!");
+                    }
+                    system("pause");
+                    break;
+                case 4:
+                    system("cls");
+                    if(getStringNumeros("\nIIngrese ID empleado:",idSrt)!= 1)
+                    {
+                        printf("\n Ingrese solo numeros!!!\n");
+                        break;
+                    }
+                    auxId = atoi(idSrt);
+                    if(buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId)== -1)
+                    {
+                        printf("\n El ID no existe!!!\n");
+                        break;
+                    }
+                    indexResultadoBusqueda = buscarPrimeraOcurrenciaId(empleado,LEN_MAX,auxId);
+                    printEmployee(empleado,LEN_MAX,indexResultadoBusqueda);
+                    if(getStringNumeros("\n Ingrese nuevo sector: ",sectorSrt)!= 1)
+                    {
+                         printf("\n Ingrese solo numeros!!!\n");
+                        break;
+                    }
+                    auxSector = atoi(sectorSrt);
+                    getChar("\n CONFIRMAR (S/N): \n");
+                    if(seguir == 's')
+                    {
+                        empleado[indexResultadoBusqueda].sector = auxSector;
+                        printf("\n Modificacion Exitosa!!!");
+                    }
+                    else
+                    {
+                        printf("\n MODIFICACION CANCELADA!!!");
+                    }
+                    system("pause");
+                    break;
+                case 5:
+                    seguir = 'n';
+                    break;
+                }
+            }
+            while(seguir == 's');
             system("pause");
             break;
         case 4:

@@ -3,7 +3,7 @@
 #include <string.h>
 #include "employee.h"
 #include "utn.h"
-
+static int id_findNexId(eEmployee* arrayEmpleado,int len);
 void initEmployee(eEmployee* arrayEmployee, int len )
 {
     int i;
@@ -139,4 +139,10 @@ void addEmployee(eEmployee* arrayEmpleado,int len)
     }
     printf("\n\n");
     system("pause");
+}
+void printEmployee(eEmployee* arrayEmpleado,int len, int index)
+{
+    printf("\n ID\tNAME\tLASTNAME\tSALARY\tSECTOR");
+    printf("\n %d \t%s\t%s\t\t%.2f \t%03d",arrayEmpleado[index].id,arrayEmpleado[index].name,arrayEmpleado[index].lastName,arrayEmpleado[index].salary,arrayEmpleado[index].sector);
+
 }

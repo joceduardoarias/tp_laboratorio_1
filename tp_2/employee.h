@@ -55,11 +55,16 @@ void setArrayEmployee(eEmployee*  arrayEmpleado,int index,char* name,char* lastN
  * \param   length int Longitud del array
  * \return  int Return (-1) si hay un Error [Longitud invalida o puntero NULL] - (proximo ID) si Ok
  */
-static int id_findNexId(eEmployee* arrayEmpleado,int len);
+//static int id_findNexId(eEmployee* arrayEmpleado,int len);
 /** \brief carga un nuevo empleado en el array
  * \param   arrayEmpleado es el array a manipular
  * \param   len es la logitud ddel array
  */
  void addEmployee(eEmployee* arrayEmpleado,int len);
+/** \brief Imprime por pantalla uno de los empleados cargados
+ * \param   arrayEmpleado es el array a manipular
+ * \param   len es la logitud ddel array
+ */
+void printEmployee(eEmployee* arrayEmpleado,int len, int index);
 
 #endif // EMPLOYEE_H_INCLUDED
