@@ -13,6 +13,12 @@ typedef struct
     int isEmpty;
 } eEmployee;
 
+typedef struct
+{
+    char descripcion[51];
+    int idSector;
+}eSector;
+
 /** \brief To indicate that all position in the array are empty,
 * this function put the flag (isEmpty) in TRUE in all
 * position of the array
@@ -50,21 +56,42 @@ int buscarPrimeraOcurrenciaId(eEmployee* arrayEmpleado, int len, int valor);
  * \param   isEmpty es el flag del estado del empleado dentro del sistema
  */
 void setArrayEmployee(eEmployee*  arrayEmpleado,int index,char* name,char* lastName,float salary,int sector,int id,int isEpmty);
-/** \brief  Busca en el array el id mas alto entre los usados y los borrados
- * \param   sAbonado* pAbonados Puntero al array de abonados
- * \param   length int Longitud del array
- * \return  int Return (-1) si hay un Error [Longitud invalida o puntero NULL] - (proximo ID) si Ok
- */
-//static int id_findNexId(eEmployee* arrayEmpleado,int len);
 /** \brief carga un nuevo empleado en el array
  * \param   arrayEmpleado es el array a manipular
  * \param   len es la logitud ddel array
  */
- void addEmployee(eEmployee* arrayEmpleado,int len);
+void addEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec);
 /** \brief Imprime por pantalla uno de los empleados cargados
  * \param   arrayEmpleado es el array a manipular
  * \param   len es la logitud ddel array
  */
 void printEmployee(eEmployee* arrayEmpleado,int len, int index);
+/** \brief Remove a Employee by Id (put isEmpty Flag in 1)
+ *
+ * \param Employee* arrayEmpleado
+ * \param int len longitud del array
+ */
+void removeEmployee(eEmployee* arrayEmpleado,int len);
+/** \brief modificar datos del empleado atraves del id
+ * \param Employee* arrayEmpleado
+ * \param int len longitud del array
+ */
+void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec);
+/** \brief carga la descripcion y id de los sectores de la empresa
+ * \param eSectores* es el array a analizar
+ * \param char descripcion es la cadena de caracteres a cargar en el array
+ * \param int idSector
+ * \param int index indece de lugar en el array
+ * \param lenSec longitud del array
+ */
+ void setArraySector(eSector* sectores,char descripcion[],int idSector,int index);
+/** \brief despliega un menu de opcciones para que el usuario selccione el sector
+ * \param eSectores* es el array a analizar
+  * \param lenSec longitud del array
+ * \return devuelve un entero validado correspondiente al id sector o -1 si un error
+ *
+ */
+int seleccionarSector(eSector* sectores,int lenSec);
+
 
 #endif // EMPLOYEE_H_INCLUDED
