@@ -148,6 +148,11 @@ void removeEmployee(eEmployee* arrayEmpleado,int len)
     printf("\n BAJA");
     while(seguir == 's')
     {
+        if(checkArrayEmpty(arrayEmpleado,len)!= 1)
+        {
+            printf("\n No hay datos cargados");
+            break;
+        }
         if(getStringNumeros("\nIngrese Id: ",idSrt) != 1)
         {
             printf("\n INGRESE SOLO NUMEROs!!!");
@@ -198,6 +203,11 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
     do
     {
         system("cls");
+        if(checkArrayEmpty(arrayEmpleado,len)!= 1)
+        {
+            printf("\n No hay datos cargados!!!");
+            break;
+        }
         printf("\n *******MENU DE MODIFICACIONES********");
         printf("\n\n");
         printf("\n1. NOMBRE \n2. APELLIDO\n3. SALARIO\n4. SECTOR\n5. SALIR");
@@ -292,9 +302,10 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
             }
             else
             {
-            printf("\n Modificacion cancelada!!!");
+                printf("\n Modificacion cancelada!!!");
             }
             system("pause");
+
             break;
         case 3:
             if(getStringNumeros("\n Ingrese ID empleado:",idSrt)!=1)
@@ -344,23 +355,36 @@ void setArraySector(eSector* sectores,char descripcion[],int idSector,int index)
 }
 int seleccionarSector(eSector* sectores,int lenSec)
 {
-     int idSector= -1;
-     char sectorStr[51];
-     int i;
-     system("cls");
+    int idSector= -1;
+    char sectorStr[51];
+    int i;
+    system("cls");
     printf("\n ID \t\t DESCRIPCION \n");
-     for(i=0;i<lenSec;i++)
-     {
+    for(i=0; i<lenSec; i++)
+    {
         printf("\n %03d \t\t %s",sectores[i].idSector,sectores[i].descripcion);
-     }
-     if(getStringNumeros("\n SELECCIONE UNA OPCION: ",sectorStr)!= 1)
-     {
-         printf("\n Ingrese solo numeros");
-     }
-     else
-     {
-         idSector = atoi(sectorStr);
-     }
+    }
+    if(getStringNumeros("\n SELECCIONE UNA OPCION: ",sectorStr)!= 1)
+    {
+        printf("\n Ingrese solo numeros");
+    }
+    else
+    {
+        idSector = atoi(sectorStr);
+    }
     return idSector;
     system("pause");
+}
+int checkArrayEmpty(eEmployee* arrayEmpleado,int len)
+{
+    int i;
+    int checked = -1;
+    for(i=0; i<len; i++)
+    {
+        if(arrayEmpleado[i].isEmpty == EMPLOYEE_USED)
+        {
+            checked = 1;
+        }
+    }
+    return checked;
 }

@@ -92,6 +92,12 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
  *
  */
 int seleccionarSector(eSector* sectores,int lenSec);
+/** \brief chequea que el array este cargado
+ * \param eSectores* es el array a analizar
+ * \param lenSec longitud del array
+ * \return devuelve 1 si esta cargado o (-1) si esta vacio
+ */
+int checkArrayEmpty(eEmployee* arrayEmpleado,int len);
 
 
 #endif // EMPLOYEE_H_INCLUDED

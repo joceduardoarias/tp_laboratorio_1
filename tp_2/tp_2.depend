@@ -49,14 +49,14 @@
 	"employee.h"
 	"utn.h"
 
-1537909056 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.c
+1537919137 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"employee.h"
 	"utn.h"
 
-1537909059 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.h
+1537918903 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.h
 
 1537408717 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\utn.h
 
@@ -67,10 +67,22 @@
 	<string.h>
 	"utn.h"
 
-1537909070 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\main.c
+1537918381 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"employee.h"
 	"utn.h"
+	"informes.h"
+
+1537916119 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\informes.h
+	"employee.h"
+
+1537919192 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\infromes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"employee.h"
+	"utn.h"
+	"informes.h"
 
