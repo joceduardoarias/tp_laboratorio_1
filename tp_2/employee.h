@@ -3,6 +3,7 @@
 #define EMPLOYEE_EMPTY 0
 #define EMPLOYEE_USED 1
 #define EMPLOYEE_DELETE 2
+#include "sector.h"
 typedef struct
 {
     int id;
@@ -12,12 +13,6 @@ typedef struct
     int sector;
     int isEmpty;
 } eEmployee;
-
-typedef struct
-{
-    char descripcion[51];
-    int idSector;
-}eSector;
 
 /** \brief To indicate that all position in the array are empty,
 * this function put the flag (isEmpty) in TRUE in all
@@ -77,14 +72,7 @@ void removeEmployee(eEmployee* arrayEmpleado,int len);
  * \param int len longitud del array
  */
 void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec);
-/** \brief carga la descripcion y id de los sectores de la empresa
- * \param eSectores* es el array a analizar
- * \param char descripcion es la cadena de caracteres a cargar en el array
- * \param int idSector
- * \param int index indece de lugar en el array
- * \param lenSec longitud del array
- */
- void setArraySector(eSector* sectores,char descripcion[],int idSector,int index);
+
 /** \brief despliega un menu de opcciones para que el usuario selccione el sector
  * \param eSectores* es el array a analizar
   * \param lenSec longitud del array

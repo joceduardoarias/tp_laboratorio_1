@@ -3,6 +3,7 @@
 #include <string.h>
 #include "employee.h"
 #include "utn.h"
+#include "sector.h"
 static int id_findNexId(eEmployee* arrayEmpleado,int len);
 void initEmployee(eEmployee* arrayEmployee, int len )
 {
@@ -348,11 +349,7 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
     }
     while(seguir=='s');
 }
-void setArraySector(eSector* sectores,char descripcion[],int idSector,int index)
-{
-    strcpy(sectores[index].descripcion,descripcion);
-    sectores[index].idSector = idSector;
-}
+
 int seleccionarSector(eSector* sectores,int lenSec)
 {
     int idSector= -1;
@@ -362,7 +359,7 @@ int seleccionarSector(eSector* sectores,int lenSec)
     printf("\n ID \t\t DESCRIPCION \n");
     for(i=0; i<lenSec; i++)
     {
-        printf("\n %03d \t\t %s",sectores[i].idSector,sectores[i].descripcion);
+        printf("\n %03d \t\t %s",sectores[i].id,sectores[i].descripcion);
     }
     if(getStringNumeros("\n SELECCIONE UNA OPCION: ",sectorStr)!= 1)
     {

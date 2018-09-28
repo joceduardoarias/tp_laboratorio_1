@@ -4,6 +4,7 @@
 #include "employee.h"
 #include "utn.h"
 #include "informes.h"
+#include "sector.h"
 #define LEN_MAX 1000
 #define LEN_SEC 5
 
@@ -15,6 +16,7 @@ int main()
     int opcion;
 
     initEmployee(empleado,LEN_MAX);
+    initSector(sector,LEN_SEC);
 
     setArrayEmployee(empleado,0,"Jose","Arias",45.23,9,1,EMPLOYEE_USED);
     setArrayEmployee(empleado,1,"Juan","Munoz",56.23,2,2,EMPLOYEE_USED);
