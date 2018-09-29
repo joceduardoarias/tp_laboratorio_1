@@ -53,7 +53,7 @@ void addSector(eSector* sectores, int lenSector);
  * \param int index indece de lugar en el array
  * \param lenSec longitud del array
  */
-void setArraySector(eSector* sectores,char descripcion[],int auxId,int index);
+void setArraySector(eSector* sectores,char descripcion[],int auxId,int index,int estado);
 /** \brief Remove a Employee by Id (put isEmpty Flag in 1)
  * \param   eSector array a recorrer
  * \param  lenSector longitud del array
@@ -70,4 +70,14 @@ void printSector(eSector* sectores, int lenSector, int index);
 * \param  lenSector longitud del array
 */
 void modifySector(eSector* sectores, int lenSector);
+/** \brief controla el alta, bajas y modificaciones de los sectores
+ * \param   eSector array a recorrer
+ * \param  lenSector longitud del array
+ */
+void controllerSector(eSector* sectores, int lenSector);
+/** \brief muestra los valores cargados en array
+ * \param   eSector array a recorrer
+ * \param  lenSector longitud del array
+ */
+void listarSectores(eSector* sectores, int lenSector);
 #endif // SECTOR_H_INCLUDED

@@ -5,7 +5,7 @@
 #include "utn.h"
 #include "informes.h"
 #include "sector.h"
-#define LEN_MAX 1000
+#define LEN_MAX 3
 #define LEN_SEC 5
 
 int main()
@@ -22,40 +22,36 @@ int main()
     setArrayEmployee(empleado,1,"Juan","Munoz",56.23,2,2,EMPLOYEE_USED);
     setArrayEmployee(empleado,2,"Luis","Cadena",95.23,1,3,EMPLOYEE_USED);
 
-    setArraySector(sector,"RRHH",1,0);
-    setArraySector(sector,"COMPRAS",2,1),
-    setArraySector(sector,"CONTABILIDAD",3,2);
-    setArraySector(sector,"SISTEMAS",4,3);
-    setArraySector(sector,"VENTAS",5,4);
+    setArraySector(sector,"RRHH",1,0,SECTOR_USED);
+    setArraySector(sector,"COMPRAS",2,1,SECTOR_USED);
+    setArraySector(sector,"CONTABILIDAD",3,2,SECTOR_USED);
+    setArraySector(sector,"SISTEMAS",4,3,SECTOR_USED);
+    setArraySector(sector,"VENTAS",5,4,SECTOR_USED);
 
     do
     {
-        system("cls");
-        printf("\n1. ALTA \n2. BAJA \n3. MODIFICACION\n4. INFORMES\n5. SALIR");
-        opcion = getInt("\n SELECCIONE UNA OPCION: ");
-
+        printf("\n1. ABM EMPLOYEE \n2. ABM SECTOR \n3. INFORMES\n4. SALIR");
+        opcion = getInt("\n Seleccione una opccion: ");
         switch(opcion)
         {
         case 1:
-            addEmployee(empleado,LEN_MAX,sector,LEN_SEC);
+            controllerEmployee(empleado,LEN_MAX,sector,LEN_SEC);
             break;
         case 2:
-            removeEmployee(empleado,LEN_MAX);
-            break;
-        case 3:
-            modifyEmployee(empleado,LEN_MAX,sector,LEN_SEC);
+            controllerSector(sector,LEN_SEC);
             break;
         case 4:
-            system("cls");
-            printf("\n INFORMES");
-            informes(empleado,LEN_MAX);
-            break;
-        case 5:
             seguir = 'n';
             break;
-        }
+        default :
 
+            system("cls");
+            printf("\n Ingrese una opcion correcta!!!");
+            system("pause");
+            break;
+        }
     }
     while(seguir == 's');
+
     return 0;
 }

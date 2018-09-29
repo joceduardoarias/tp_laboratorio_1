@@ -49,7 +49,7 @@
 	"employee.h"
 	"utn.h"
 
-1538091443 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.c
+1538197916 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -57,7 +57,7 @@
 	"utn.h"
 	"sector.h"
 
-1538091495 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.h
+1538192171 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\employee.h
 	"sector.h"
 
 1537408717 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\utn.h
@@ -69,7 +69,7 @@
 	<string.h>
 	"utn.h"
 
-1538086878 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\main.c
+1538197465 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -89,9 +89,9 @@
 	"utn.h"
 	"informes.h"
 
-1538094273 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\sector.h
+1538195556 c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\sector.h
 
-1538094011 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\sector.c
+1538197936 source:c:\users\elkinjose\desktop\tp_laboratorio_1\tp_2\sector.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -86,6 +86,12 @@ int seleccionarSector(eSector* sectores,int lenSec);
  * \return devuelve 1 si esta cargado o (-1) si esta vacio
  */
 int checkArrayEmpty(eEmployee* arrayEmpleado,int len);
-
+/** \brief controla el alta, modificacion y bajas de los empeados
+ * \param eSectores* es el array a analizar
+ * \param lenSec longitud del array
+ * \return
+ *
+ */
+void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int lenSec);
 
 #endif // EMPLOYEE_H_INCLUDED

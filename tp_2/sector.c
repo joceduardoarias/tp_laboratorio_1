@@ -3,13 +3,15 @@
 #include <string.h>
 #include "utn.h"
 #include "sector.h"
+
 static int findNextIdSector(eSector* sectores, int lenSector);
+
 void initSector(eSector* sectores, int lenSector )
 {
     int i;
     for(i=0; i<lenSector; i++)
     {
-        sectores[i].isEmpty = SECTOR_USED;
+        sectores[i].isEmpty = SECTOR_EMPTY;
     }
 }
 int buscarPrimeraOcurrenciaSector(eSector* sectores, int lenSector, int valor)
@@ -18,7 +20,7 @@ int buscarPrimeraOcurrenciaSector(eSector* sectores, int lenSector, int valor)
     int index = -1;
     for(i=0; i<lenSector; i++)
     {
-        if(sectores[i].isEmpty == valor)
+        if(sectores[i].isEmpty == valor || sectores[i].isEmpty == SECTOR_DELETE)
         {
             index = i;
             break;
@@ -62,10 +64,11 @@ static int findNextIdSector(eSector* sectores, int lenSector)
     }
     return retorno;
 }
-void setArraySector(eSector* sectores,char descripcion[],int auxId,int index)
+void setArraySector(eSector* sectores,char descripcion[],int auxId,int index,int estado)
 {
     strcpy(sectores[index].descripcion,descripcion);
     sectores[index].id = auxId;
+    sectores[index].isEmpty = estado;
 }
 void addSector(eSector* sectores, int lenSector)
 {
@@ -75,25 +78,26 @@ void addSector(eSector* sectores, int lenSector)
     char descripcionSrt[51];
     int indexLugarLibre;
 
-
     while(seguir == 's')
     {
         indexLugarLibre = buscarPrimeraOcurrenciaSector(sectores,lenSector,SECTOR_EMPTY);
         if(indexLugarLibre == -1)
         {
-            printf("\n No hay lugar para cargar datos");
+            printf("\n No espacio para cargar datos\n");
             break;
         }
+
         auxId = findNextIdSector(sectores,lenSector);
-        if(getStringLetras("\n Ingrese descripcion: ",descripcionSrt) != 1)
+        if(getStringLetras("\n Ingrese descripcion: ",descripcionSrt)!= 1)
         {
             printf("\n Ingrese solo letras!!!");
             break;
         }
 
-        setArraySector(sectores,descripcionSrt,auxId,indexLugarLibre);
-
-        seguir = getChar("\n CONTINUAR (S/N): ");
+        setArraySector(sectores,descripcionSrt,auxId,indexLugarLibre,SECTOR_USED);
+        printf("\n Alta exitosa!!!\n");
+        seguir = getChar("\n Continuar cargando datos (s/n): ");
+        printf("\n\n");
 
     }
 
@@ -131,14 +135,13 @@ void removeSector(eSector* sectores, int lenSector)
         {
             sectores[indexResultadoBusqueda].isEmpty = SECTOR_DELETE;
             printf("\n Baja exitosa!!!");
+            seguir = 'n';
         }
         else
         {
             printf("\n Baja cancelada!!!");
+            seguir = 'n';
         }
-
-        seguir = getChar("\n Salir (s/n): ");
-
     }
 
 }
@@ -166,7 +169,7 @@ void modifySector(eSector* sectores, int lenSector)
             break;
         }
         indexResultadoBusqueda = buscarPrimeraOcurrenciaSectorId(sectores,lenSector,auxId);
-
+        printSector(sectores,lenSector,indexResultadoBusqueda);
         if(getStringLetras("\n Ingrese nueva descripcion: ",descripcionSrt)!= 1)
         {
             printf("\n Ingrese solo letras!!!!");
@@ -181,10 +184,66 @@ void modifySector(eSector* sectores, int lenSector)
         }
         else
         {
-             printf("\n Modificacion cancelada!!!");
+            printf("\n Modificacion cancelada!!!");
         }
 
         seguir = getChar("\n Salir (s/n): ");
     }
 
+}
+void controllerSector(eSector* sectores, int lenSector)
+{
+    char seguir = 's';
+    int opcion;
+
+    do
+    {
+        printf("\n1. ALTA\n2. BAJAS \n3. MODIFICACION\n4. LISTAR \n5. SALIR\n");
+        opcion = getInt("\nSeleccione una opcion: \n");
+        switch(opcion)
+        {
+        case 1:
+            system("cls");
+            addSector(sectores,lenSector);
+            system("pause");
+            break;
+        case 2:
+            system("cls");
+            removeSector(sectores,lenSector);
+            system("pause");
+            break;
+        case 3:
+            system("cls");
+            modifySector(sectores,lenSector);
+            system("pause");
+            break;
+        case 4:
+            system("cls");
+            listarSectores(sectores,lenSector);
+            system("pause");
+            break;
+        case 5:
+            seguir = 'n';
+            break;
+        default:
+            system("cls");
+            printf("\n seleccione una opcion correcta\n");
+            system("pause");
+            break;
+        }
+    }
+    while(seguir == 's');
+}
+void listarSectores(eSector* sectores, int lenSector)
+{
+    int i;
+
+    for(i=0; i<lenSector; i++)
+    {
+        if(sectores[i].isEmpty == SECTOR_USED)
+        {
+            printSector(sectores,lenSector,i);
+        }
+    }
+    printf("\n\n");
 }

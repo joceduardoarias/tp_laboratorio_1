@@ -19,7 +19,7 @@ int buscarPrimeraOcurrencia(eEmployee* arrayEmpleado, int len, int valor)
     int retorno = -1;
     for(i=0; i<len; i++)
     {
-        if(arrayEmpleado[i].isEmpty == valor)
+        if(arrayEmpleado[i].isEmpty == valor || arrayEmpleado[i].isEmpty == EMPLOYEE_DELETE)
         {
             retorno = i;
             break;
@@ -199,7 +199,6 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
     char nombreSrt[51];
     char apellidoSrt[51];
     char salarioSrt[51];
-    char sectorSrt[51];
 
     do
     {
@@ -384,4 +383,33 @@ int checkArrayEmpty(eEmployee* arrayEmpleado,int len)
         }
     }
     return checked;
+}
+void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int lenSec)
+{
+    char seguir = 's';
+    int opcion;
+    do
+    {
+        system("cls");
+        printf("\n1. ALTA \n2. BAJA \n3. MODIFICACION\n4. SALIR");
+        opcion = getInt("\n SELECCIONE UNA OPCION: ");
+
+        switch(opcion)
+        {
+        case 1:
+            addEmployee(arrayEmpleado,len,sector,lenSec);
+            break;
+        case 2:
+            removeEmployee(arrayEmpleado,len);
+            break;
+        case 3:
+            modifyEmployee(arrayEmpleado,len,sector,lenSec);
+            break;
+        case 4:
+            seguir = 'n';
+            break;
+        }
+
+    }
+    while(seguir == 's');
 }
