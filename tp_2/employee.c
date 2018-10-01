@@ -131,7 +131,7 @@ void addEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec)
 }
 void printEmployee(eEmployee* arrayEmpleado,int len, int index)
 {
-    printf("\n ID\tNAME\tLASTNAME\tSALARY\tSECTOR");
+    //printf("\n ID\tNAME\tLASTNAME\tSALARY\tSECTOR");
     printf("\n %d \t%s\t%s\t\t%.2f \t%03d",arrayEmpleado[index].id,arrayEmpleado[index].name,arrayEmpleado[index].lastName,arrayEmpleado[index].salary,arrayEmpleado[index].sector);
 
 }
@@ -391,7 +391,7 @@ void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int le
     do
     {
         system("cls");
-        printf("\n1. ALTA \n2. BAJA \n3. MODIFICACION\n4. SALIR");
+        printf("\n1. ALTA \n2. BAJA \n3. MODIFICACION\n4. LISTAR\n5. SALIR");
         opcion = getInt("\n SELECCIONE UNA OPCION: ");
 
         switch(opcion)
@@ -406,10 +406,31 @@ void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int le
             modifyEmployee(arrayEmpleado,len,sector,lenSec);
             break;
         case 4:
+            mostrarEmployees(arrayEmpleado,len);
+            break;
+        case 5:
             seguir = 'n';
+            break;
+        default:
+            printf("\n Seleccione una opcion corrcta!!!");
             break;
         }
 
     }
     while(seguir == 's');
+}
+void mostrarEmployees(eEmployee* arrayEmpleado,int len)
+{
+    int i;
+    system("cls");
+   printf("\n ID\tNAME\tLASTNAME\tSALARY\tSECTOR");
+    for(i=0;i<len;i++)
+    {
+        if(arrayEmpleado[i].isEmpty == EMPLOYEE_USED)
+        {
+            printEmployee(arrayEmpleado,len,i);
+        }
+    }
+    printf("\n\n");
+    system("pause");
 }

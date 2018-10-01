@@ -89,9 +89,8 @@ int checkArrayEmpty(eEmployee* arrayEmpleado,int len);
 /** \brief controla el alta, modificacion y bajas de los empeados
  * \param eSectores* es el array a analizar
  * \param lenSec longitud del array
- * \return
- *
  */
 void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int lenSec);
+void mostrarEmployees(eEmployee* arrayEmpleado,int len);
 
 #endif // EMPLOYEE_H_INCLUDED
