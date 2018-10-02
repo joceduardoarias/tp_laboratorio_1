@@ -26,5 +26,12 @@ int cantidadEmpleadoSalarioPromedioArriba(eEmployee* arrayEmpleado,int len);
  * \param int len longitud del array
  */
 void informes(eEmployee* arrayEmpleado,int len);
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 #endif // INFORMES_H_INCLUDED

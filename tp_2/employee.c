@@ -135,6 +135,20 @@ void printEmployee(eEmployee* arrayEmpleado,int len, int index)
     printf("\n %d \t%s\t%s\t\t%.2f \t%03d",arrayEmpleado[index].id,arrayEmpleado[index].name,arrayEmpleado[index].lastName,arrayEmpleado[index].salary,arrayEmpleado[index].sector);
 
 }
+void printEmployee2(eEmployee* arrayEmpleado,int len, int index, eSector* sector,int lenSec)
+{
+    int i;
+    char sectorStr[51];
+    for(i=0;i<lenSec;i++)
+    {
+        if(sector[i].id == arrayEmpleado[index].sector)
+        {
+            strcpy(sectorStr,sector[i].descripcion);
+        }
+    }
+    printf("\n %d \t%s\t%s\t\t%.2f \t%s",arrayEmpleado[index].id,arrayEmpleado[index].name,arrayEmpleado[index].lastName,arrayEmpleado[index].salary,sectorStr);
+    system("pause");
+}
 void removeEmployee(eEmployee* arrayEmpleado,int len)
 {
     char seguir = 's';
@@ -280,33 +294,6 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
             printf("\n\n");
             system("pause");
             break;
-        case 4:
-            if(getStringNumeros("\n Ingrese ID empleado:",idSrt)!=1)
-            {
-                printf("\n Ingrese solo numeros");
-                break;
-            }
-            auxId = atoi(idSrt);
-            if(buscarPrimeraOcurrenciaId(arrayEmpleado,len,auxId)== -1)
-            {
-                printf("\n El ID %d no existe!!!",auxId);
-                break;
-            }
-            indexResultadoBusqueda = buscarPrimeraOcurrenciaId(arrayEmpleado,len,auxId);
-            auxSector = seleccionarSector(sector,lenSec);
-            seguir = getChar("\n CONTINUAR (S/N): ");
-            if(seguir == 's')
-            {
-                arrayEmpleado[indexResultadoBusqueda].sector = auxSector;
-                printf("\n Modificacion exitosa!!!\n");
-            }
-            else
-            {
-                printf("\n Modificacion cancelada!!!");
-            }
-            system("pause");
-
-            break;
         case 3:
             if(getStringNumeros("\n Ingrese ID empleado:",idSrt)!=1)
             {
@@ -341,6 +328,37 @@ void modifyEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec
             }
             printf("\n\n");
             system("pause");
+            break;
+        case 4:
+            system("cls");
+            if(getStringNumeros("\n Ingrese ID empleado:",idSrt)!=1)
+            {
+                printf("\n Ingrese solo numeros");
+                break;
+            }
+            auxId = atoi(idSrt);
+            if(buscarPrimeraOcurrenciaId(arrayEmpleado,len,auxId)== -1)
+            {
+                printf("\n El ID %d no existe!!!",auxId);
+                break;
+            }
+            indexResultadoBusqueda = buscarPrimeraOcurrenciaId(arrayEmpleado,len,auxId);
+           printEmployee2(arrayEmpleado,len,indexResultadoBusqueda,sector,lenSec);
+            auxSector = seleccionarSector(sector,lenSec);
+
+            seguir = getChar("\n CONTINUAR (S/N): ");
+            if(seguir == 's')
+            {
+                arrayEmpleado[indexResultadoBusqueda].sector = auxSector;
+                printf("\n Modificacion exitosa!!!\n");
+            }
+            else
+            {
+                printf("\n Modificacion cancelada!!!");
+            }
+            system("pause");
+
+            break;
         case 5:
             seguir = 'n';
             break;
@@ -406,7 +424,7 @@ void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int le
             modifyEmployee(arrayEmpleado,len,sector,lenSec);
             break;
         case 4:
-            mostrarEmployees(arrayEmpleado,len);
+            mostrarEmployees(arrayEmpleado,len,sector,lenSec);
             break;
         case 5:
             seguir = 'n';
@@ -419,17 +437,28 @@ void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int le
     }
     while(seguir == 's');
 }
-void mostrarEmployees(eEmployee* arrayEmpleado,int len)
+void mostrarEmployees(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec)
 {
-    int i;
+    int i,j;
+    char auxSector[51];
+
     system("cls");
-   printf("\n ID\tNAME\tLASTNAME\tSALARY\tSECTOR");
-    for(i=0;i<len;i++)
+    printf("\n ID\tNAME\tLASTNAME\tSALARY\tSECTOR");
+    for(i=0; i<len; i++)
     {
-        if(arrayEmpleado[i].isEmpty == EMPLOYEE_USED)
+        //if(arrayEmpleado[i].isEmpty == EMPLOYEE_USED)
+
+        for(j=0; j<lenSec; j++)
         {
-            printEmployee(arrayEmpleado,len,i);
+            if(arrayEmpleado[i].sector == sector[j].id && arrayEmpleado[i].isEmpty == EMPLOYEE_USED)
+            {
+                strcpy(auxSector,sector[j].descripcion);
+                printf("\n %d \t%s\t%s\t\t%.2f \t%s",arrayEmpleado[i].id,arrayEmpleado[i].name,arrayEmpleado[i].lastName,arrayEmpleado[i].salary,auxSector);
+
+            }
         }
+
+
     }
     printf("\n\n");
     system("pause");

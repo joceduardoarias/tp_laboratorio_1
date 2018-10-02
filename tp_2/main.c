@@ -5,7 +5,7 @@
 #include "utn.h"
 #include "informes.h"
 #include "sector.h"
-#define LEN_MAX 3
+#define LEN_MAX 1000
 #define LEN_SEC 5
 
 int main()
@@ -18,9 +18,10 @@ int main()
     initEmployee(empleado,LEN_MAX);
     initSector(sector,LEN_SEC);
 
-    setArrayEmployee(empleado,0,"Jose","Arias",45.23,9,1,EMPLOYEE_USED);
+    setArrayEmployee(empleado,0,"Jose","Arias",45.23,5,1,EMPLOYEE_USED);
     setArrayEmployee(empleado,1,"Juan","Munoz",56.23,2,2,EMPLOYEE_USED);
     setArrayEmployee(empleado,2,"Luis","Cadena",95.23,1,3,EMPLOYEE_USED);
+    setArrayEmployee(empleado,3,"pedro","morales",67.98,4,4,EMPLOYEE_USED);
 
     setArraySector(sector,"RRHH",1,0,SECTOR_USED);
     setArraySector(sector,"COMPRAS",2,1,SECTOR_USED);

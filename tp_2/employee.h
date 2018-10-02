@@ -61,6 +61,7 @@ void addEmployee(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec);
  * \param   len es la logitud ddel array
  */
 void printEmployee(eEmployee* arrayEmpleado,int len, int index);
+void printEmployee2(eEmployee* arrayEmpleado,int len, int index, eSector* sector,int lenSec);
 /** \brief Remove a Employee by Id (put isEmpty Flag in 1)
  *
  * \param Employee* arrayEmpleado
@@ -91,6 +92,13 @@ int checkArrayEmpty(eEmployee* arrayEmpleado,int len);
  * \param lenSec longitud del array
  */
 void controllerEmployee(eEmployee* arrayEmpleado,int len,eSector* sector, int lenSec);
-void mostrarEmployees(eEmployee* arrayEmpleado,int len);
+/** \brief imprime todas los empledos cargados por el usuario
+ *
+ * \param eEmployee* arrayEmpleado es el array de empleados
+ * \param len longitud del arrayEmpleado
+ * \param eSector* sector es el array de sectores
+ * \param int lenSec longitud del array sectores
+ */
+void mostrarEmployees(eEmployee* arrayEmpleado,int len, eSector* sector,int lenSec);
 
 #endif // EMPLOYEE_H_INCLUDED
