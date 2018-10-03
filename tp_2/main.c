@@ -42,7 +42,7 @@ int main()
             controllerSector(sector,LEN_SEC);
             break;
         case 3:
-            informes(empleado,LEN_MAX);
+            informes(empleado,LEN_MAX,sector,LEN_SEC);
             break;
         case 4:
             seguir = 'n';
