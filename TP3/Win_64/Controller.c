@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Employee.h"
-
+#include "utn.h"
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -47,9 +47,9 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
                 break;
             }
             else
-                {
-                    printf("\n leyo todo el archivo!!");
-                }
+            {
+                printf("\n leyo todo el archivo!!");
+            }
         }
     }
     fclose(lista);
@@ -77,6 +77,51 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
+    char seguir = 's';
+    char idSrt[128];
+    char nombreSrt[128];
+    char horasTrabajadasSrt[128];
+    char sueldoSrt[128];
+    Employee* this;
+    int i;
+    while(seguir == 's')
+    {
+       if(getStringNumeros("\n Ingrese Id: ",idSrt)!= 1)
+    {
+        printf("\n ingrese solo numeros");
+        break;
+    }
+
+    if(getStringLetras("\n ingrese nombre: ",nombreSrt)!=1)
+    {
+        printf("\n ingrese solo letras");
+        break;
+    }
+    if(getStringNumeros("\n cantidad horas trabajadas: ",horasTrabajadasSrt)!=1)
+    {
+        printf("\n ingrese solo numeros");
+        break;
+    }
+
+    if(getStringNumerosFlotantes("\n Ingrese sueldo: ",sueldoSrt)!=1)
+    {
+        printf("\n ingrese solo numeros");
+        break;
+    }
+
+    this =employee_newParametros(idSrt,nombreSrt,horasTrabajadasSrt,sueldoSrt);
+    ll_add(pArrayListEmployee,this);
+    seguir = getChar("\n continuar cargando datos (s/n)\n");
+    }
+
+    for(i=0; i<ll_len(pArrayListEmployee); i++)
+    {
+        this = ll_get(pArrayListEmployee,i);
+
+        printf("\n %d %s %d %.2f\n",this->id,this->nombre,this->horasTrabajadas,this->sueldo);
+    }
+
+
     return 1;
 }
 
@@ -89,6 +134,40 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
+    char seguir = 's';
+    char idSrt[128];
+    char nombreSrt[128];
+    char horasTrabajadasSrt[128];
+    char sueldoSrt[128];
+    Employee* this;
+    int auxId;
+    int i;
+    while(seguir == 's')
+    {
+       if(getStringNumeros("\n Ingrese Id: ",idSrt)!= 1)
+    {
+        printf("\n ingrese solo numeros");
+        break;
+    }
+    auxId = atoi(idSrt);
+    for(i=;i<ll_len(pArrayListEmployee);i++)
+    {
+        if(this->id == id)
+
+    }
+
+    this =employee_newParametros(idSrt,nombreSrt,horasTrabajadasSrt,sueldoSrt);
+    ll_add(pArrayListEmployee,this);
+    seguir = getChar("\n continuar cargando datos (s/n)\n");
+    }
+
+    for(i=0; i<ll_len(pArrayListEmployee); i++)
+    {
+        this = ll_get(pArrayListEmployee,i);
+
+        printf("\n %d %s %d %.2f\n",this->id,this->nombre,this->horasTrabajadas,this->sueldo);
+    }
+
     return 1;
 }
 

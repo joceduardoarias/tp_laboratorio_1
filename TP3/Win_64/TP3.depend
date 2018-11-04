@@ -84,3 +84,37 @@
 
 1541250242 d:\ariasjose\tp3\win_64\controller.h
 
+1541293632 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	<string.h>
+
+1541293632 c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\employee.h
+
+1541293632 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541293632 c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\linkedlist.h
+
+1541294008 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1541293632 c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\controller.h
+
+1539125330 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1539125373 c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\utn.h
+
