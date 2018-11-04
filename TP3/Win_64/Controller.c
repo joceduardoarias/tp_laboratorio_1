@@ -13,6 +13,7 @@
  */
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
+    system("cls");
     FILE* lista;
     Employee* nuevoEmpleado;
     int cantidadLeida;
@@ -77,6 +78,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
+    system("cls");
     char seguir = 's';
     char idSrt[128];
     char nombreSrt[128];
@@ -86,32 +88,32 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     int i;
     while(seguir == 's')
     {
-       if(getStringNumeros("\n Ingrese Id: ",idSrt)!= 1)
-    {
-        printf("\n ingrese solo numeros");
-        break;
-    }
+        if(getStringNumeros("\n Ingrese Id: ",idSrt)!= 1)
+        {
+            printf("\n ingrese solo numeros");
+            break;
+        }
 
-    if(getStringLetras("\n ingrese nombre: ",nombreSrt)!=1)
-    {
-        printf("\n ingrese solo letras");
-        break;
-    }
-    if(getStringNumeros("\n cantidad horas trabajadas: ",horasTrabajadasSrt)!=1)
-    {
-        printf("\n ingrese solo numeros");
-        break;
-    }
+        if(getStringLetras("\n ingrese nombre: ",nombreSrt)!=1)
+        {
+            printf("\n ingrese solo letras");
+            break;
+        }
+        if(getStringNumeros("\n cantidad horas trabajadas: ",horasTrabajadasSrt)!=1)
+        {
+            printf("\n ingrese solo numeros");
+            break;
+        }
 
-    if(getStringNumerosFlotantes("\n Ingrese sueldo: ",sueldoSrt)!=1)
-    {
-        printf("\n ingrese solo numeros");
-        break;
-    }
+        if(getStringNumerosFlotantes("\n Ingrese sueldo: ",sueldoSrt)!=1)
+        {
+            printf("\n ingrese solo numeros");
+            break;
+        }
 
-    this =employee_newParametros(idSrt,nombreSrt,horasTrabajadasSrt,sueldoSrt);
-    ll_add(pArrayListEmployee,this);
-    seguir = getChar("\n continuar cargando datos (s/n)\n");
+        this =employee_newParametros(idSrt,nombreSrt,horasTrabajadasSrt,sueldoSrt);
+        ll_add(pArrayListEmployee,this);
+        seguir = getChar("\n continuar cargando datos (s/n)\n");
     }
 
     for(i=0; i<ll_len(pArrayListEmployee); i++)
@@ -121,7 +123,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         printf("\n %d %s %d %.2f\n",this->id,this->nombre,this->horasTrabajadas,this->sueldo);
     }
 
-
+    system("pause");
     return 1;
 }
 
@@ -134,40 +136,120 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
+    system("cls");
     char seguir = 's';
     char idSrt[128];
     char nombreSrt[128];
     char horasTrabajadasSrt[128];
     char sueldoSrt[128];
     Employee* this;
-    int auxId;
-    int i;
+    int auxId,auxHorasTrabajadas;
+    float auxSueldo;
+    int i,opcion;
+    int flag = 0;
     while(seguir == 's')
     {
-       if(getStringNumeros("\n Ingrese Id: ",idSrt)!= 1)
-    {
-        printf("\n ingrese solo numeros");
-        break;
+        if(getStringNumeros("\n Ingrese Id: ",idSrt)!= 1)
+        {
+            printf("\n ingrese solo numeros");
+            break;
+        }
+
+        auxId = atoi(idSrt);
+        for(i=0; i<ll_len(pArrayListEmployee); i++)
+        {
+            this =(Employee*) ll_get(pArrayListEmployee,i);
+            if(this->id == auxId)
+            {
+
+                flag = 1;
+                break;
+            }
+
+        }
+
+        if(flag == 1)
+        {
+            do
+            {
+                system("cls");
+                printf("\n MODIFICACIONES \n1. NOMBRE\n2. HORAS TRABAJADAS\n3. SUELDOS\n4. SALIR\n");
+                printf("\n %d %s %d %.2f\n",this->id,this->nombre,this->horasTrabajadas,this->sueldo);
+                opcion = getInt("\n Seleccione un opcion: ");
+
+                switch(opcion)
+                {
+                case 1:
+
+                    if(getStringLetras("\n Ingrese nuevo nombre: ",nombreSrt)!=1)
+                    {
+                        printf("\n Ingrese solo letras!!!! \n");
+                    }
+                    seguir = getChar("\n confirmar modificacion (s/n): ");
+                    if(seguir == 's')
+                    {
+                        employee_setNombre(this,nombreSrt);
+
+                    }
+                    else
+                    {
+                        printf("\n modificacion cancelada!!!\n");
+                    }
+                    system("pause");
+                    break;
+                case 2:
+
+                    if(getStringNumeros("\n Ingrese nueva cantidad de horar trabajdas: ",horasTrabajadasSrt)!=1)
+                    {
+                        printf("\n Ingrese solo numeros!!!! \n");
+                    }
+                    auxHorasTrabajadas = atoi(horasTrabajadasSrt);
+                    seguir = getChar("\n confirmar modificacion (s/n): ");
+                    if(seguir == 's')
+                    {
+                        employee_setHorasTrabajadas(this,auxHorasTrabajadas);
+
+                    }
+                    else
+                    {
+                        printf("\n modificacion cancelada!!!\n");
+                    }
+                    system("pause");
+                    break;
+                case 3:
+
+                    if(getStringNumerosFlotantes("\n Ingrese nuevo sueldo: ",sueldoSrt)!=1)
+                    {
+                        printf("\n Ingrese solo letras!!!! \n");
+                    }
+                    auxSueldo = atof(sueldoSrt);
+                    seguir = getChar("\n confirmar modificacion (s/n): ");
+                    if(seguir == 's')
+                    {
+                        employee_setSueldo(this,auxSueldo);
+
+                    }
+                    else
+                    {
+                        printf("\n modificacion cancelada!!!\n");
+                    }
+                    system("pause");
+                    break;
+                case 4:
+                    seguir = 'n';
+                    break;
+                }
+
+            }
+            while(seguir =='s');
+        }
+        else
+        {
+            printf("\n El id ingresado no extiste!!!!");
+        }
+        seguir = getChar("\n continuar cargando datos (s/n)\n");
     }
-    auxId = atoi(idSrt);
-    for(i=;i<ll_len(pArrayListEmployee);i++)
-    {
-        if(this->id == id)
-
-    }
-
-    this =employee_newParametros(idSrt,nombreSrt,horasTrabajadasSrt,sueldoSrt);
-    ll_add(pArrayListEmployee,this);
-    seguir = getChar("\n continuar cargando datos (s/n)\n");
-    }
-
-    for(i=0; i<ll_len(pArrayListEmployee); i++)
-    {
-        this = ll_get(pArrayListEmployee,i);
-
-        printf("\n %d %s %d %.2f\n",this->id,this->nombre,this->horasTrabajadas,this->sueldo);
-    }
-
+    system("pause");
     return 1;
 }
 
@@ -180,6 +262,40 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
+    system("cls");
+    printf("\n BAJAS\n");
+    int auxId,i,flag=0;
+    char idSrt[128];
+    Employee* this;
+    if(getStringNumeros("\n Ingrese id para realizar baja:  ",idSrt)!=1)
+    {
+        printf("\n Ingrese solo numeros!!!\n");
+    }
+    auxId = atoi(idSrt);
+    printf("\n %d",auxId);
+    printf("\n antes\n");
+    system("pause");
+    for(i=0; i<ll_len(pArrayListEmployee); i++)
+    {
+        this = (Employee*)ll_get(pArrayListEmployee,i);
+        if(this->id == auxId)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    printf("\n despues\n");
+
+    system("pause");
+    if(flag == 1)
+    {
+        ll_remove(pArrayListEmployee,i);
+        printf("\n Empleado elimanado correctamente!!!");
+    }
+    else
+    {
+        printf("\n el id de empleado ingresadono  no existe!!!!");
+    }
     return 1;
 }
 
@@ -192,6 +308,16 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+    system("cls");
+    Employee* this;
+    int i;
+
+    for(i=0;i<ll_len(pArrayListEmployee);i++)
+    {
+        this = ll_get(pArrayListEmployee,i);
+        printf("\n %d %s %d %.2f\n",this->id,this->nombre,this->horasTrabajadas,this->sueldo);
+    }
+    system("pause");
     return 1;
 }
 
@@ -233,6 +359,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 
 void menu()
 {
+    system("cls");
     printf("\n**************************************************** \n");
     printf("\nMenu: \n");
     printf("\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto). \n");

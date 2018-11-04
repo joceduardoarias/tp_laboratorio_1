@@ -100,9 +100,10 @@
 
 1541293632 c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\linkedlist.h
 
-1541294008 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\main.c
+1541368137 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
@@ -117,4 +118,11 @@
 	"utn.h"
 
 1539125373 c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\utn.h
+
+1541368017 source:c:\users\elkinjose\tps\tp_laboratorio_1\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
 

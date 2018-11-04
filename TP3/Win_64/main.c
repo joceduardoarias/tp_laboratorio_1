@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
@@ -23,17 +24,32 @@ int main()
 {
     char option = 's';
     LinkedList* listaEmpleados = ll_newLinkedList();
-    menu();
+
     do{
+        system("cls");
+            menu();
         //printf("\n Ingrese option:");
         //scanf("%d",&option);
         switch(option)
         {
             case '1':
+                system("cls");
                 controller_loadFromText("data.csv",listaEmpleados);
+                system("pause");
                 break;
             case '3':
                controller_addEmployee(listaEmpleados);
+                break;
+            case '4':
+                controller_editEmployee(listaEmpleados);
+                break;
+            case '5':
+                controller_removeEmployee(listaEmpleados);
+                break;
+            case '6':
+                system("cls");
+                controller_ListEmployee(listaEmpleados);
+                system("pause");
                 break;
         }
     }while((option = getch())!= ESC);
