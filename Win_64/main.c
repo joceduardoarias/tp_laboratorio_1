@@ -37,6 +37,9 @@ int main()
                 controller_loadFromText("data.csv",listaEmpleados);
                 system("pause");
                 break;
+            case '2':
+                controller_loadFromBinary("data.bin",listaEmpleados);
+                break;
             case '3':
                controller_addEmployee(listaEmpleados);
                 break;
@@ -49,10 +52,15 @@ int main()
             case '6':
                 system("cls");
                 controller_ListEmployee(listaEmpleados);
-                system("pause");
                 break;
             case '7':
                 controller_sortEmployee(listaEmpleados);
+                break;
+            case '8':
+                controller_saveAsText("data.csv",listaEmpleados);
+                break;
+            case '9':
+                controller_saveAsBinary("data.bin",listaEmpleados);
                 break;
         }
     }while((option = getch())!= ESC);

@@ -117,3 +117,46 @@ int employeeByName(void* employeeA,void* employeeB)
     }
     return retorno;
 }
+int employeeById(void* employeeA,void* employeeB)
+{
+//    Employee* auxA;
+//    Employee* auxB;
+    int retorno = 0;
+//    if(employeeA != NULL && employeeB != NULL)
+//    {
+//        auxA =(Employee*) employeeA;
+//        auxB =(Employee*) employeeB;
+//        if(auxA->id < auxB->id);
+//    }
+    if(((Employee*)employeeA)->id<((Employee*)employeeB)->id)
+    {
+        retorno=1;
+    }
+//    if(((Employee*)employeeA)->id>((Employee*)employeeB)->id)
+//    {
+//        retorno=-1;
+//    }
+    return retorno;
+}
+int employeeByHorasTrabajadas(void* employeeA,void* employeeB)
+{
+    int retorno = 0;
+    //    if(((employeeA*)employeeA)->horasTrabajadas >((Employee*)employeeB)->horasTrabajadas)
+//    {
+//    retorno = 1;
+//    }
+    if(((Employee*)employeeA)->horasTrabajadas<((Employee*)employeeB)->horasTrabajadas)
+    {
+        retorno=1;
+    }
+    return retorno;
+}
+int employeeBySalario(void* employeeA,void* employeeB)
+{
+    int retorno = 0;
+    if(((Employee*)employeeA)->sueldo<((Employee*)employeeB)->sueldo)
+    {
+        retorno=1;
+    }
+    return retorno;
+}
