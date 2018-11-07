@@ -126,3 +126,87 @@
 	"Employee.h"
 	"utn.h"
 
+1541424724 source:d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541424724 d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\linkedlist.h
+
+1541425178 d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\employee.h
+
+1541430929 source:d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1541424724 d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\utn.h
+
+1541424900 source:d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1541424723 d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\controller.h
+
+1541424724 source:d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1541430914 source:d:\ariasjose\tp_laboratorio_1-master\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	<string.h>
+
+1541549231 source:c:\users\elkinjose\tps\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1541459632 c:\users\elkinjose\tps\win_64\linkedlist.h
+
+1541459632 c:\users\elkinjose\tps\win_64\controller.h
+
+1541466899 c:\users\elkinjose\tps\win_64\employee.h
+
+1541459632 source:c:\users\elkinjose\tps\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541459632 source:c:\users\elkinjose\tps\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1541459632 c:\users\elkinjose\tps\win_64\utn.h
+
+1541476104 source:c:\users\elkinjose\tps\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1541466897 source:c:\users\elkinjose\tps\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	<string.h>
+
