@@ -99,9 +99,29 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
 
-    if(this!= NULL && nodeIndex>=0 && nodeIndex<ll_len(this))
+    Node* pNewNode = malloc(sizeof(Node));
+    Node* pNodeLeft = NULL;
+    Node* PNodeRight= NULL;
+    if(this!= NULL && nodeIndex>=0 && nodeIndex<=ll_len(this))
     {
+        if(nodeIndex == 0)
+        {
+            pNewNode->pNextNode = this->pFirstNode;
+            this->pFirstNode = pNewNode;
+        }
 
+        else
+        {
+            if(nodeIndex > 0 && nodeIndex <= ll_len(this))
+            {
+                pNodeLeft = getNode(this,nodeIndex-1);
+                PNodeRight = pNodeLeft->pNextNode;
+                pNodeLeft->pNextNode = pNewNode;
+                pNewNode->pNextNode = PNodeRight;
+            }
+        }
+        this->size += 1;
+        pNewNode->pElement = pElement;
         returnAux = 0;
     }
     return returnAux;
@@ -133,7 +153,12 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
+    if(this != NULL )
+    {
 
+        addNode(this,ll_len(this),pElement);
+        returnAux = 0;
+    }
     return returnAux;
 }
 
@@ -148,7 +173,15 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
-
+    Node* auxNode = NULL;
+    if(this != NULL)
+    {
+        if(index>=0 && index <ll_len(this))
+        {
+            auxNode = getNode(this,index);
+            returnAux = auxNode->pElement;
+        }
+    }
     return returnAux;
 }
 
@@ -165,7 +198,13 @@ void* ll_get(LinkedList* this, int index)
 int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux = -1;
-
+    Node* auxNode = NULL;
+    if(this != NULL && index >= 0 && index<ll_len(this))
+    {
+        auxNode= getNode(this,index);
+        auxNode->pElement = pElement;
+        returnAux = 0;
+    }
     return returnAux;
 }
 
@@ -181,7 +220,12 @@ int ll_set(LinkedList* this, int index,void* pElement)
 int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
+    Node* auxNode = NULL;
+    if(this!= NULL && index >= 0 && index<ll_len(this))
+    {
+        auxNode = getNode(this, index);
 
+    }
     return returnAux;
 }
 
