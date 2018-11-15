@@ -333,7 +333,7 @@ int ll_isEmpty(LinkedList* this)
         }
         else
         {
-             returnAux = 1;
+            returnAux = 1;
         }
 
     }
@@ -423,7 +423,32 @@ int ll_contains(LinkedList* this, void* pElement)
 int ll_containsAll(LinkedList* this,LinkedList* this2)
 {
     int returnAux = -1;
+    int i;
+    if(this!=NULL && this2!=NULL)
+    {
+        for(i=0; i<ll_len(this2); i++)
+        {
+            printf("\n tamaño lista2 %d\n",ll_len(this2));
+            printf("\n tamaño lista %d\n",ll_len(this));
+//            (-1) Error: si el puntero a la lista es NULL
+//                        ( 1) Si contiene el elemento
+//                        ( 0) si No contiene el elemento
+            if((ll_contains(this,getNode(this2,i)))==0)
+            {
+                returnAux = 0;
+                printf("\n si no contiene un elemento");
+                system("pause");
+                break;
+            }
+            else
+            {
+                returnAux = 1;
+            }
+        }
 
+    }
+    printf("\n Retorno %d: ",returnAux);
+    system("pause");
     return returnAux;
 }
 
