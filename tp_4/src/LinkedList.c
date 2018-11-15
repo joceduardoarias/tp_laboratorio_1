@@ -232,8 +232,11 @@ int ll_remove(LinkedList* this,int index)
             rightNode = getNode(this,index+1);
             leftNode->pNextNode = rightNode;
             free(auxNode);
-            this->size-=1;
         }
+        // Esta asignacion estaba adentro del if(index!=0)
+        this->size-=1;
+        // lo cambie de posicion por un bug que genera en la funcion pop
+        // ahora las dos andan al 100%, compartir para certificar sus operatividad
         returnAux = 0;
     }
     return returnAux;
@@ -372,9 +375,11 @@ void* ll_pop(LinkedList* this,int index)
     void* returnAux = NULL;
     if(this!= NULL && index<=ll_len(this) && index>=0)
     {
+        printf("\n tamaño de la lista antes de borrar: %d ",ll_len(this));
         returnAux = ll_get(this,index);
         ll_remove(this,index);
-
+        printf("\n tamaño de la lista despues de borrar: %d ",ll_len(this));
+        system("pause");
     }
     return returnAux;
 }
