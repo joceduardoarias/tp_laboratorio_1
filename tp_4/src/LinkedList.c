@@ -407,7 +407,6 @@ int ll_contains(LinkedList* this, void* pElement)
             returnAux = 0;
         }
     }
-    system("pause");
     return returnAux;
 }
 
@@ -426,29 +425,17 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     int i;
     if(this!=NULL && this2!=NULL)
     {
+        returnAux = 1;
         for(i=0; i<ll_len(this2); i++)
         {
-            printf("\n tamaño lista2 %d\n",ll_len(this2));
-            printf("\n tamaño lista %d\n",ll_len(this));
-//            (-1) Error: si el puntero a la lista es NULL
-//                        ( 1) Si contiene el elemento
-//                        ( 0) si No contiene el elemento
-            if((ll_contains(this,getNode(this2,i)))==0)
+            if((ll_contains(this,ll_get(this2,i)))==0)
             {
                 returnAux = 0;
-                printf("\n si no contiene un elemento");
-                system("pause");
                 break;
-            }
-            else
-            {
-                returnAux = 1;
             }
         }
 
     }
-    printf("\n Retorno %d: ",returnAux);
-    system("pause");
     return returnAux;
 }
 
@@ -465,6 +452,15 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
     LinkedList* cloneArray = NULL;
+    int i;
+    if(this!= NULL && from >= 0 && from < ll_len(this) && to > from && to <= ll_len(this))
+    {
+        cloneArray =  ll_newLinkedList();
+        for(i=from; i<=to; i++)
+        {
+            ll_add(cloneArray,ll_get(this,i));
+        }
+    }
 
     return cloneArray;
 }
@@ -480,7 +476,21 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
-
+    int i;
+    printf("\n len this %d\n",ll_len(this));
+    getchar();
+    if(this!= NULL)
+    {
+        cloneArray = ll_newLinkedList();
+        printf("\n len clone %d\n",ll_len(cloneArray));
+        for(i=0; i<ll_len(this); i++)
+        {
+            ll_add(cloneArray,ll_get(this,i));
+        }
+    }
+    printf("\n len clone %d\n",ll_len(cloneArray));
+    printf("\n cargados %d\n",i);
+    getchar();
     return cloneArray;
 }
 
@@ -495,6 +505,41 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
 {
     int returnAux =-1;
+    if(this != NULL && pFunc!= NULL && order >= 0  && order <=1 )
+    {
+        returnAux =0;
+        int i;
+        int seguir;
+
+        do
+        {
+            seguir = 0;
+            Node* elementoActual = NULL;
+            Node* elementoAnterior = NULL;
+            void* auxElemento= NULL;
+            int resultadoEsperado = 1;
+            if(order)
+            {
+                resultadoEsperado = -1;
+            }
+
+            int len = ll_len(this);
+            for (i = 1; i < len; i++)
+            {
+                if (pFunc(ll_get(this,i),ll_get(this,i-1)) == resultadoEsperado)
+                {
+                    elementoActual = getNode(this,i);
+                    elementoAnterior = getNode(this,i-1);
+
+                    auxElemento = elementoActual->pElement;
+                    elementoActual->pElement = elementoAnterior->pElement;
+                    elementoAnterior->pElement = auxElemento;
+                    seguir = 1;
+                }
+            }
+        }
+        while(seguir);
+    }
 
     return returnAux;
 
